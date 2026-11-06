@@ -146,6 +146,10 @@ p{margin:0;max-width:34ch;text-wrap:pretty}
 /* En la foto y en la confirmación las flores van detrás de la tarjeta y solo asoman por las esquinas */
 .foto,.rsvp{isolation:isolate}
 .foto .flor,.rsvp .flor{z-index:-1}
+.flor.detras{z-index:-2}
+/* Tarjetas: el papel va en una capa propia (z -2) encima de las flores .detras: así quedan debajo del recuadro */
+.tarjeta{isolation:isolate;background:none!important}
+.tarjeta>.papel{position:absolute;inset:0;z-index:-1;background:var(--marfil) var(--textura)}
 .foto figcaption{position:absolute;left:0;right:0;bottom:8px;font-family:var(--script);font-size:1.6rem;color:var(--tinta-suave)}
 .foto .sello-img{position:absolute;right:-18px;top:-22px;width:74px;transform:rotate(12deg)}
 
@@ -319,6 +323,7 @@ form .btn{justify-self:center;margin-top:4px}
 
   <!-- 5. Ubicación -->
   <article class="tarjeta revelar">
+    <div class="papel" aria-hidden="true"></div>
     <img class="icono copas" src="elementos/copas.webp" alt="Dos copas de champán brindando" style="--h:130px">
     <img class="flor ambos" data-flor="eucalipto" alt="" style="--w:96px;right:-14px;top:-14px;--o:92% 5%;--d:-1s">
     <h3>Ceremonia</h3>
@@ -330,8 +335,9 @@ form .btn{justify-self:center;margin-top:4px}
 
   <!-- 6. Código de vestimenta -->
   <article class="tarjeta revelar">
+    <div class="papel" aria-hidden="true"></div>
     <img class="icono pareja" src="elementos/pareja.webp" alt="Pareja vestida de etiqueta: ella con vestido largo, él con traje y corbata" style="--h:170px">
-    <img class="flor espejo" data-flor="gipsofila" alt="" style="--w:clamp(78px,24vw,104px);left:calc(var(--w) * -0.62);bottom:-46px;--o:50% 100%;--d:-4s">
+    <img class="flor espejo detras" data-flor="gipsofila" alt="" style="--w:120px;left:-22px;bottom:-104px;--o:50% 100%;--d:-4s">
     <h3>Dress code</h3>
     <div class="grande" style="font-style:italic">Formal cocktail</div>
     <div class="paleta" aria-label="Colores sugeridos">
@@ -349,8 +355,9 @@ form .btn{justify-self:center;margin-top:4px}
 
   <!-- 7. Regalos -->
   <article class="tarjeta revelar">
+    <div class="papel" aria-hidden="true"></div>
     <img class="icono carta" src="elementos/sobre_regalo.webp" alt="Sobre sellado con lacre" style="--h:96px">
-    <img class="flor" data-flor="guisante" alt="" style="--w:clamp(72px,22vw,100px);right:calc(var(--w) * -0.6);bottom:-40px;--o:65% 100%;--d:-2s">
+    <img class="flor detras" data-flor="guisante" alt="" style="--w:112px;right:-24px;bottom:-96px;--o:65% 100%;--d:-2s">
     <h3>Regalos</h3>
     <p>Tu presencia es el mejor regalo para nosotros. Si desean tener un detalle, tendremos un <b>cofre de los deseos</b> para contribuir a esta nueva etapa.</p>
   </article>
@@ -480,7 +487,7 @@ const reducido = matchMedia("(prefers-reduced-motion: reduce)").matches;
     document.documentElement.classList.add("midiendo");
     flores.forEach(img => {
       img.style.setProperty("--w", img.dataset.w); img.style.zIndex = img.style.margin = "";
-      if (!img.naturalWidth || getComputedStyle(img).zIndex === "-1") return;
+      if (!img.naturalWidth || parseInt(getComputedStyle(img).zIndex) < 0) return;
       const rs = obstaculos(img.closest("section,article")), original = img.getBoundingClientRect().width;
       // Primero la empuja hacia su esquina (fuera de la tarjeta); si aún toca, la achica
       const lado = img.style.left ? "marginLeft" : "marginRight", alto = img.style.top ? "marginTop" : "marginBottom";
