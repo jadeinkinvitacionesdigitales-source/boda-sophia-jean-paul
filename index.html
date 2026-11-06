@@ -193,6 +193,11 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--oro)}
 form .btn{justify-self:center;margin-top:4px}
 .nota{font-size:.88rem;color:var(--tinta-suave);text-align:center}
 #rsvp-listo{display:grid;gap:10px;justify-items:center;position:relative}
+.pase{gap:6px}
+.pase-nombre{font-size:2.5rem;line-height:1.1;text-wrap:balance}
+.pase-num{display:grid;justify-items:center;margin:4px 0}
+.pase-num b{font-size:4.4rem;font-weight:300;line-height:1;color:var(--oro);font-variant-numeric:tabular-nums}
+.pase-num span{font-size:.9rem;letter-spacing:.32em;text-transform:uppercase}
 
 /* Pie */
 .pie{display:grid;gap:6px;justify-items:center;padding-bottom:70px}
@@ -259,6 +264,15 @@ form .btn{justify-self:center;margin-top:4px}
       <img class="flor volteo" data-flor="eucalipto" alt="" style="--w:26%;left:-3%;top:-2%;--o:8% 5%">
       <img class="flor" data-flor="gipsofila" alt="" style="--w:30%;right:calc(var(--w) * -0.5 + 6%);bottom:-2%;--o:50% 100%;--d:-3s">
     </div>
+  </section>
+
+  <!-- Pase personal: solo aparece con un enlace creado en el panel (?inv=...) -->
+  <section class="velo pase revelar" id="pase" hidden>
+    <span class="etiqueta">Pase personal</span>
+    <div class="script pase-nombre" id="pase-nombre"></div>
+    <p class="suave">Hemos reservado para ti</p>
+    <div class="pase-num"><b id="pase-num">1</b><span id="pase-lbl">puesto</span></div>
+    <p class="suave">en nuestra celebración</p>
   </section>
 
   <!-- 2. Fecha -->
@@ -347,19 +361,19 @@ form .btn{justify-self:center;margin-top:4px}
           <input type="radio" name="asiste" id="asiste-si" value="si" checked><label for="asiste-si">Con gusto asistiré</label>
           <input type="radio" name="asiste" id="asiste-no" value="no"><label for="asiste-no">No podré ir</label>
         </div>
-        <label for="pases">Número de personas
+        <label for="pases"><span id="pases-txt">Número de personas</span>
           <select id="pases" name="pases"><option>1</option><option>2</option><option>3</option><option>4</option></select>
         </label>
         <label for="mensaje">Mensaje para los novios (opcional)
           <textarea id="mensaje" name="mensaje" rows="3" placeholder="Unas palabras para Sophia y Jean Paul"></textarea>
         </label>
-        <p class="nota" id="error-rsvp" hidden>Escribe tu nombre para poder confirmar.</p>
-        <button class="btn lleno" type="submit">Enviar por WhatsApp</button>
+        <p class="nota" id="error-rsvp" hidden></p>
+        <button class="btn lleno" type="submit" id="enviar-rsvp">Confirmar asistencia</button>
       </form>
       <div id="rsvp-listo" hidden>
-        <p>Se abrió WhatsApp con tu mensaje listo. Solo presiona <b>enviar</b> allí.</p>
-        <p class="nota">¿No se abrió? Escríbenos al <span id="wa-visible"></span>.</p>
-        <button class="btn" type="button" id="otra">Enviar otra confirmación</button>
+        <p id="listo-texto"></p>
+        <p class="nota" id="listo-nota"></p>
+        <button class="btn" type="button" id="otra">Cambiar mi respuesta</button>
       </div>
       <img class="flor" data-flor="eucalipto" alt="" style="--w:100px;left:-36px;bottom:-34px;--o:8% 95%">
       <img class="flor espejo" data-flor="guisante" alt="" style="--w:110px;right:calc(var(--w) * -0.65 + 26px);bottom:-30px;--o:35% 100%;--d:-3s">
@@ -387,7 +401,10 @@ form .btn{justify-self:center;margin-top:4px}
 const BODA = {
   fechaISO: "2026-12-12T17:00:00-05:00",     // 5:00 p. m., hora de Panamá
   lugar: "Restaurante Zielo, Costa del Este, Panamá",
-  whatsapp: "50760000000",                   // número con código de país, sin + ni espacios
+  // URL de la app web de Google Apps Script (la misma que API en panel.html).
+  // Con ella las confirmaciones se guardan en Google Sheets y se ven en el panel; vacía, se envían por WhatsApp.
+  api: "",
+  whatsapp: "50760000000",                   // solo se usa si "api" está vacía: número con código de país, sin + ni espacios
   whatsappVisible: "+507 6000-0000"
 };
 /* =============================== */
@@ -437,23 +454,75 @@ const reducido = matchMedia("(prefers-reduced-motion: reduce)").matches;
   });
 })();
 
-// RSVP por WhatsApp
+// Invitado del enlace personalizado (?inv=...): nombre y puestos reservados desde el panel
+const invitado = (() => {
+  try {
+    const raw = new URLSearchParams(location.search).get("inv");
+    if (!raw) return null;
+    const g = JSON.parse(decodeURIComponent(escape(atob(raw.replace(/-/g, "+").replace(/_/g, "/")))));
+    const p = Math.max(1, Math.min(50, parseInt(g.p, 10) || 1));
+    return g.n ? { id: String(g.i || ""), nombre: String(g.n).slice(0, 120), puestos: p } : null;
+  } catch (e) { return null; }
+})();
 const form = document.getElementById("form-rsvp"), listo = document.getElementById("rsvp-listo");
-document.getElementById("wa-visible").textContent = BODA.whatsappVisible;
-document.getElementById("otra").addEventListener("click", () => { form.reset(); form.hidden = false; listo.hidden = true; });
-form.addEventListener("submit", e => {
+const selPases = document.getElementById("pases"), btnEnviar = document.getElementById("enviar-rsvp");
+const errRsvp = document.getElementById("error-rsvp");
+const puestosTxt = n => n === 1 ? "puesto" : "puestos";
+function rellenarInvitado() {
+  if (!invitado) return;
+  document.getElementById("nombre").value = invitado.nombre;
+  selPases.innerHTML = Array.from({ length: invitado.puestos }, (_, i) => `<option>${i + 1}</option>`).join("");
+  selPases.value = invitado.puestos;
+  document.getElementById("pases-txt").textContent = `Número de personas (máx. ${invitado.puestos})`;
+}
+if (invitado) {
+  document.getElementById("pase").hidden = false;
+  document.getElementById("pase-nombre").textContent = invitado.nombre;
+  document.getElementById("pase-num").textContent = invitado.puestos;
+  document.getElementById("pase-lbl").textContent = puestosTxt(invitado.puestos);
+  rellenarInvitado();
+}
+const textoBoton = BODA.api ? "Confirmar asistencia" : "Enviar por WhatsApp";
+btnEnviar.textContent = textoBoton;
+document.getElementById("otra").addEventListener("click", () => { form.reset(); rellenarInvitado(); form.hidden = false; listo.hidden = true; });
+function mostrarListo(texto, nota) {
+  document.getElementById("listo-texto").textContent = texto;
+  document.getElementById("listo-nota").textContent = nota;
+  form.hidden = true; listo.hidden = false;
+}
+form.addEventListener("submit", async e => {
   e.preventDefault();
-  const fd = new FormData(form), nombre = fd.get("nombre").trim(), err = document.getElementById("error-rsvp");
-  if (!nombre) { err.hidden = false; document.getElementById("nombre").focus(); return; }
-  err.hidden = true;
-  let txt = fd.get("asiste") === "si"
-    ? `¡Hola! Soy ${nombre} y confirmo con mucha alegría mi asistencia al matrimonio de Sophia Victoria & Jean Paul el sábado 12 de diciembre. Personas: ${fd.get("pases")}.`
+  const fd = new FormData(form), nombre = fd.get("nombre").trim(), asiste = fd.get("asiste") === "si";
+  const mensaje = fd.get("mensaje").trim(), personas = asiste ? parseInt(fd.get("pases"), 10) || 1 : 0;
+  if (!nombre) { errRsvp.textContent = "Escribe tu nombre para poder confirmar."; errRsvp.hidden = false; document.getElementById("nombre").focus(); return; }
+  errRsvp.hidden = true;
+
+  // Con la app de Google conectada, la respuesta se guarda en la hoja y aparece en el panel
+  if (BODA.api) {
+    btnEnviar.disabled = true; btnEnviar.textContent = "Enviando…";
+    try {
+      const r = await fetch(BODA.api, { method: "POST", body: JSON.stringify({ action: "rsvp", id: invitado ? invitado.id : "", nombre, asistencia: asiste ? "si" : "no", personas, mensaje }) }).then(r => r.json());
+      if (!r.ok) throw new Error(r.error);
+      mostrarListo(asiste
+        ? `¡Gracias, ${nombre}! Tu confirmación para ${personas} ${personas === 1 ? "persona" : "personas"} ya les llegó a Sophia y Jean Paul.`
+        : `Gracias por avisarnos, ${nombre}. Te vamos a extrañar.`,
+        asiste ? "Nos vemos el sábado 12 de diciembre." : "");
+    } catch (err) {
+      errRsvp.textContent = "No se pudo enviar tu respuesta. Revisa tu conexión e inténtalo de nuevo.";
+      errRsvp.hidden = false;
+    } finally { btnEnviar.disabled = false; btnEnviar.textContent = textoBoton; }
+    return;
+  }
+
+  // Sin la app de Google: se envía por WhatsApp
+  let txt = asiste
+    ? `¡Hola! Soy ${nombre} y confirmo con mucha alegría mi asistencia al matrimonio de Sophia Victoria & Jean Paul el sábado 12 de diciembre. Personas: ${personas}.`
     : `¡Hola! Soy ${nombre}. Lamentablemente no podré asistir al matrimonio de Sophia Victoria & Jean Paul, pero les deseo muchísimas bendiciones.`;
-  if (fd.get("mensaje").trim()) txt += `\n\nMensaje: ${fd.get("mensaje").trim()}`;
+  if (mensaje) txt += `\n\nMensaje: ${mensaje}`;
   const a = document.createElement("a");
   a.href = `https://wa.me/${BODA.whatsapp}?text=${encodeURIComponent(txt)}`; a.target = "_blank"; a.rel = "noopener";
   document.body.appendChild(a); a.click(); a.remove();
-  form.hidden = true; listo.hidden = false;
+  mostrarListo("Se abrió WhatsApp con tu mensaje listo. Solo presiona enviar allí.", `¿No se abrió? Escríbenos al ${BODA.whatsappVisible}.`);
 });
 
 // Destellos dorados al romper el sello
