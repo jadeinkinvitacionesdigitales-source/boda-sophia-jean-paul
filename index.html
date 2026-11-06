@@ -6,13 +6,13 @@
 <meta name="description" content="Sábado 12 de diciembre de 2026 · 5:00 p. m. · Restaurante Zielo, Costa del Este">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jadeinkinvitacionesdigitales-source.github.io/boda-sophia-jean-paul/">
-<meta property="og:title" content="Sophia Victoria &amp; Jean Paul · Nuestra boda">
+<meta property="og:title" content="Sophia Victoria y Jean Paul · Nuestra boda">
 <meta property="og:description" content="Sábado 12 de diciembre de 2026 · Tenemos el honor de invitarte a celebrar nuestro matrimonio civil.">
 <meta property="og:image" content="https://jadeinkinvitacionesdigitales-source.github.io/boda-sophia-jean-paul/vista-previa.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#f0eff2">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
-<title>Sophia Victoria & Jean Paul</title>
+<title>Sophia Victoria y Jean Paul</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap">
@@ -107,14 +107,13 @@ p{margin:0;max-width:34ch;text-wrap:pretty}
 .marco .lema{font-weight:600;font-size:calc(var(--u) * 3.5 * var(--k));letter-spacing:.06em;text-transform:uppercase;line-height:1.3}
 .marco .bendicion{font-size:calc(var(--u) * 2.6 * var(--k));letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave);line-height:1.4}
 .marco .padres{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u) * 1.2) calc(var(--u) * 3);font-style:italic;font-size:calc(var(--u) * 3.4 * var(--k));line-height:1.25;width:100%}
-.marco .nombres{display:grid;justify-items:center;gap:calc(var(--u) * .6 * var(--k));margin:var(--u) 0}
+.marco .nombres{display:grid;justify-items:center;gap:calc(var(--u) * 1.4 * var(--k));margin:var(--u) 0}
 .marco .nombres .script{font-size:calc(var(--u) * 10.5 * var(--k));line-height:1.2;white-space:nowrap}
-.marco .amp{font-family:var(--script);color:var(--oro);font-size:calc(var(--u) * 8 * var(--k));line-height:.8}
+.marco .amp{font-family:var(--script);color:var(--oro);font-size:calc(var(--u) * 13 * var(--k));line-height:1.15}
 .marco .honor{font-size:calc(var(--u) * 2.9 * var(--k));letter-spacing:.1em;text-transform:uppercase;line-height:1.45}
-/* "&" caligráfico (imagen sin fondo) */
-img.y{display:inline-block;height:1.05em;width:auto;vertical-align:-.12em;margin:0 .06em}
-.marco .amp img.y{display:block;height:calc(var(--u) * 17 * var(--k));margin:calc(var(--u) * 2.2 * var(--k)) 0}
-img.y.y-grande{display:block;height:1.9em;margin:.18em auto}
+/* "y" caligráfica entre los nombres */
+.y-letra{display:block;font-family:var(--script);font-weight:400;color:var(--oro);font-size:1.15em;line-height:1.1}
+.nombres-pie{display:grid;justify-items:center;line-height:1.15}
 .marco .divisor{width:calc(var(--u) * 16);height:1px;background:var(--oro)}
 .escribir{display:inline-block;clip-path:inset(0 100% 0 0);animation:escribe 2s cubic-bezier(.6,0,.3,1) forwards paused}
 .lista .escribir{animation-play-state:running}
@@ -212,7 +211,7 @@ form .btn{justify-self:center;margin-top:4px}
 
 /* Pie */
 .pie{display:grid;gap:6px;justify-items:center;padding-bottom:70px}
-.pie .script{font-size:clamp(2.1rem,10.5vw,3rem);white-space:nowrap}
+.pie .script{font-size:clamp(2.2rem,11vw,3rem);white-space:nowrap}
 .pie span{letter-spacing:.3em;font-size:.9rem}
 
 /* Aparición al hacer scroll */
@@ -243,7 +242,7 @@ form .btn{justify-self:center;margin-top:4px}
 <div id="sobre" role="dialog" aria-label="Sobre de la invitación">
   <div class="env">
     <div class="interior-sobre"></div>
-    <div class="carta"><span>Sophia<img class="y y-grande" src="elementos/amp.webp?v=2" alt="&amp;">Jean Paul</span></div>
+    <div class="carta"><span>Sophia Victoria<b class="y-letra">y</b>Jean Paul</span></div>
     <div class="capa cuerpo"></div>
     <div class="solapa"><div class="cara"></div><div class="dorso"></div></div>
     <button id="abrir" type="button" aria-label="Abrir la invitación"></button>
@@ -267,7 +266,7 @@ form .btn{justify-self:center;margin-top:4px}
         <div class="divisor"></div>
         <div class="nombres">
           <span class="script escribir">Sophia Victoria</span>
-          <span class="amp escribir d2"><img class="y" src="elementos/amp.webp?v=2" alt="&amp;"></span>
+          <span class="amp escribir d2">y</span>
           <span class="script escribir d3">Jean Paul</span>
         </div>
         <div class="honor">Tenemos el honor de invitarles a celebrar nuestro matrimonio civil</div>
@@ -377,7 +376,7 @@ form .btn{justify-self:center;margin-top:4px}
           <select id="pases" name="pases"><option>1</option><option>2</option><option>3</option><option>4</option></select>
         </label>
         <label for="mensaje">Mensaje para los novios (opcional)
-          <textarea id="mensaje" name="mensaje" rows="3" placeholder="Unas palabras para Sophia y Jean Paul"></textarea>
+          <textarea id="mensaje" name="mensaje" rows="3" placeholder="Unas palabras para Sophia Victoria y Jean Paul"></textarea>
         </label>
         <p class="nota" id="error-rsvp" hidden></p>
         <button class="btn lleno" type="submit" id="enviar-rsvp">Confirmar asistencia</button>
@@ -403,7 +402,7 @@ form .btn{justify-self:center;margin-top:4px}
 
   <!-- Pie -->
   <section class="pie revelar velo" style="padding-bottom:30px;margin-bottom:70px">
-    <div class="script">Sophia <img class="y" src="elementos/amp.webp?v=2" alt="&amp;"> Jean Paul</div>
+    <div class="script nombres-pie">Sophia Victoria<b class="y-letra">y</b>Jean Paul</div>
     <span>12 · 12 · 2026</span>
   </section>
 </main>
@@ -503,7 +502,7 @@ const reducido = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const ini = new Date(BODA.fechaISO), fin = new Date(ini.getTime() + 6 * 3600e3);
   const f = d => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
   document.getElementById("calendario").href = "https://calendar.google.com/calendar/render?" + new URLSearchParams({
-    action: "TEMPLATE", text: "Boda de Sophia Victoria & Jean Paul", dates: f(ini) + "/" + f(fin),
+    action: "TEMPLATE", text: "Boda de Sophia Victoria y Jean Paul", dates: f(ini) + "/" + f(fin),
     details: "Matrimonio civil · Formal cocktail", location: BODA.lugar });
 })();
 
@@ -567,7 +566,7 @@ if (invitado) {
 // Contacto por WhatsApp para dudas
 document.getElementById("wa-numero").textContent = BODA.whatsappVisible;
 document.getElementById("wa-contacto").href = `https://wa.me/${BODA.whatsapp}?text=${encodeURIComponent(
-  invitado ? `¡Hola! Soy ${invitado.nombre}, tengo una pregunta sobre la boda de Sophia Victoria & Jean Paul.` : "¡Hola! Tengo una pregunta sobre la boda de Sophia Victoria & Jean Paul.")}`;
+  invitado ? `¡Hola! Soy ${invitado.nombre}, tengo una pregunta sobre la boda de Sophia Victoria y Jean Paul.` : "¡Hola! Tengo una pregunta sobre la boda de Sophia Victoria y Jean Paul.")}`;
 const textoBoton = BODA.api ? "Confirmar asistencia" : "Enviar por WhatsApp";
 btnEnviar.textContent = textoBoton;
 document.getElementById("otra").addEventListener("click", () => { form.reset(); rellenarInvitado(); form.hidden = false; listo.hidden = true; });
@@ -590,7 +589,7 @@ form.addEventListener("submit", async e => {
       const r = await fetch(BODA.api, { method: "POST", body: JSON.stringify({ action: "rsvp", id: invitado ? invitado.id : "", nombre, asistencia: asiste ? "si" : "no", personas, mensaje }) }).then(r => r.json());
       if (!r.ok) throw new Error(r.error);
       mostrarListo(asiste
-        ? `¡Gracias, ${nombre}! Tu confirmación para ${personas} ${personas === 1 ? "persona" : "personas"} ya les llegó a Sophia y Jean Paul.`
+        ? `¡Gracias, ${nombre}! Tu confirmación para ${personas} ${personas === 1 ? "persona" : "personas"} ya les llegó a Sophia Victoria y Jean Paul.`
         : `Gracias por avisarnos, ${nombre}. Te vamos a extrañar.`,
         asiste ? "Nos vemos el sábado 12 de diciembre." : "");
     } catch (err) {
@@ -602,8 +601,8 @@ form.addEventListener("submit", async e => {
 
   // Sin la app de Google: se envía por WhatsApp
   let txt = asiste
-    ? `¡Hola! Soy ${nombre} y confirmo con mucha alegría mi asistencia al matrimonio de Sophia Victoria & Jean Paul el sábado 12 de diciembre. Personas: ${personas}.`
-    : `¡Hola! Soy ${nombre}. Lamentablemente no podré asistir al matrimonio de Sophia Victoria & Jean Paul, pero les deseo muchísimas bendiciones.`;
+    ? `¡Hola! Soy ${nombre} y confirmo con mucha alegría mi asistencia al matrimonio de Sophia Victoria y Jean Paul el sábado 12 de diciembre. Personas: ${personas}.`
+    : `¡Hola! Soy ${nombre}. Lamentablemente no podré asistir al matrimonio de Sophia Victoria y Jean Paul, pero les deseo muchísimas bendiciones.`;
   if (mensaje) txt += `\n\nMensaje: ${mensaje}`;
   const a = document.createElement("a");
   a.href = `https://wa.me/${BODA.whatsapp}?text=${encodeURIComponent(txt)}`; a.target = "_blank"; a.rel = "noopener";
