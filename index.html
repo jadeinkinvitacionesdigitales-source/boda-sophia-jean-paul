@@ -113,7 +113,8 @@ p{margin:0;max-width:34ch;text-wrap:pretty}
 .marco .honor{font-size:calc(var(--u) * 2.9 * var(--k));letter-spacing:.1em;text-transform:uppercase;line-height:1.45}
 /* "&" caligráfico (imagen sin fondo) */
 img.y{display:inline-block;height:1.05em;width:auto;vertical-align:-.12em;margin:0 .06em}
-.marco .amp img.y{display:block;height:calc(var(--u) * 12 * var(--k));margin:0}
+.marco .amp img.y{display:block;height:calc(var(--u) * 17 * var(--k));margin:calc(var(--u) * 2.2 * var(--k)) 0}
+img.y.y-grande{display:block;height:1.9em;margin:.18em auto}
 .marco .divisor{width:calc(var(--u) * 16);height:1px;background:var(--oro)}
 .escribir{display:inline-block;clip-path:inset(0 100% 0 0);animation:escribe 2s cubic-bezier(.6,0,.3,1) forwards paused}
 .lista .escribir{animation-play-state:running}
@@ -242,7 +243,7 @@ form .btn{justify-self:center;margin-top:4px}
 <div id="sobre" role="dialog" aria-label="Sobre de la invitación">
   <div class="env">
     <div class="interior-sobre"></div>
-    <div class="carta"><span>Sophia <img class="y" src="elementos/amp.webp" alt="&amp;"><br>Jean Paul</span></div>
+    <div class="carta"><span>Sophia<img class="y y-grande" src="elementos/amp.webp?v=2" alt="&amp;">Jean Paul</span></div>
     <div class="capa cuerpo"></div>
     <div class="solapa"><div class="cara"></div><div class="dorso"></div></div>
     <button id="abrir" type="button" aria-label="Abrir la invitación"></button>
@@ -266,7 +267,7 @@ form .btn{justify-self:center;margin-top:4px}
         <div class="divisor"></div>
         <div class="nombres">
           <span class="script escribir">Sophia Victoria</span>
-          <span class="amp escribir d2"><img class="y" src="elementos/amp.webp" alt="&amp;"></span>
+          <span class="amp escribir d2"><img class="y" src="elementos/amp.webp?v=2" alt="&amp;"></span>
           <span class="script escribir d3">Jean Paul</span>
         </div>
         <div class="honor">Tenemos el honor de invitarles a celebrar nuestro matrimonio civil</div>
@@ -402,7 +403,7 @@ form .btn{justify-self:center;margin-top:4px}
 
   <!-- Pie -->
   <section class="pie revelar velo" style="padding-bottom:30px;margin-bottom:70px">
-    <div class="script">Sophia <img class="y" src="elementos/amp.webp" alt="&amp;"> Jean Paul</div>
+    <div class="script">Sophia <img class="y" src="elementos/amp.webp?v=2" alt="&amp;"> Jean Paul</div>
     <span>12 · 12 · 2026</span>
   </section>
 </main>
