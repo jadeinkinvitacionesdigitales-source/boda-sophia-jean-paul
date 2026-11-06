@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Sábado 12 de diciembre de 2026 · 5:00 p. m. · Restaurante Zielo, Costa del Este">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jadeinkinvitacionesdigitales-source.github.io/boda-sophia-jean-paul/">
+<meta property="og:title" content="Sophia Victoria &amp; Jean Paul · Nuestra boda">
+<meta property="og:description" content="Sábado 12 de diciembre de 2026 · Tenemos el honor de invitarte a celebrar nuestro matrimonio civil.">
+<meta property="og:image" content="https://jadeinkinvitacionesdigitales-source.github.io/boda-sophia-jean-paul/vista-previa.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f0eff2">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
+<title>Sophia Victoria & Jean Paul</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap">
+<style>
+/* Papelería clásica: sobre de algodón con sello dorado que se abre, marco de encaje,
+   y una sola columna centrada de tarjetas marfil con sellos de oro. Estética única, sin modo oscuro. */
+:root{
+  --fondo:#f0eff2;
+  --marfil:#fbf7ee;
+  --tinta:#2b2621;
+  --tinta-suave:#6f655b;
+  --oro:#b28d52;
+  --oro-claro:#e2cfa8;
+  --salvia:#6f8466;
+  --script:"Pinyon Script","Great Vibes",cursive;
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --textura:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .3 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+/* Velo marfil translúcido para que el texto se lea sobre la foto de flores */
+.velo{width:min(440px,100%);background:rgba(251,248,241,.8);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:30px 20px;box-shadow:0 18px 34px -26px rgba(60,45,30,.45)}
+html{scroll-behavior:smooth}
+#fondo{position:fixed;inset:0;z-index:-1;background:var(--fondo) url("elementos/fondo.webp") right center/cover no-repeat}
+body{background:var(--fondo);color:var(--tinta);font-family:var(--serif);font-size:18px;line-height:1.55;overflow-x:hidden;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body.cerrado{overflow:hidden;height:100%}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+.script{font-family:var(--script);font-weight:400;line-height:1.1}
+.etiqueta{font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;color:var(--oro);font-weight:500}
+h2{font-family:var(--script);font-weight:400;font-size:2.9rem;line-height:1;margin:0;text-wrap:balance}
+
+/* ================= SOBRE ================= */
+#sobre{position:fixed;inset:0;z-index:50;background:#ece6dc var(--textura);display:grid;place-items:center;padding:16px;overflow:hidden;transition:opacity 1.2s ease,visibility 0s linear 1.2s;perspective:1600px}
+#sobre.fuera{opacity:0;visibility:hidden}
+/* El sobre cubre toda la pantalla (como "cover") y un 6% extra para que nunca se vean sus bordes */
+.env{--h:max(106vh,calc(106vw / .563));--w:calc(var(--h) * .563);position:absolute;left:50%;top:50%;width:var(--w);height:var(--h);margin-left:calc(var(--w) / -2);margin-top:calc(var(--h) / -2)}
+@supports (height:100dvh){.env{--h:max(106dvh,calc(106vw / .563))}}
+@keyframes flotar{50%{transform:translateY(-8px) rotate(-.5deg)}}
+.env .capa{position:absolute;inset:0;background:url("elementos/sobre.webp") center/100% 100% no-repeat}
+.env .interior-sobre{position:absolute;inset:3% 2% 0;background:linear-gradient(180deg,#d9cfbf,#e9e1d4 40%);border-radius:14px;box-shadow:inset 0 14px 30px rgba(80,60,40,.25)}
+.env .cuerpo{clip-path:polygon(0 27.5%,50% 56%,100% 27.5%,100% 100%,0 100%);z-index:3}
+.env .solapa{position:absolute;inset:0;z-index:4;transform-origin:50% 0;transform:perspective(1200px) rotateX(0deg);transform-style:preserve-3d;transition:transform 1.1s cubic-bezier(.55,0,.25,1),z-index 0s .55s}
+.env .solapa>div{position:absolute;inset:0;clip-path:polygon(0 0,100% 0,100% 27.5%,50% 56%,0 27.5%);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.env .solapa .cara{background:url("elementos/sobre.webp") center/100% 100% no-repeat}
+.env .solapa .dorso{background:#e7dfd2 var(--textura);transform:rotateX(180deg)}
+.env .carta{position:absolute;left:9%;right:9%;top:7%;aspect-ratio:760/1155;background:url("elementos/marco.webp") center/100% 100% no-repeat;z-index:2;transition:transform 1.4s cubic-bezier(.2,.75,.2,1) .9s;display:grid;place-items:center;text-align:center}
+.env .carta span{font-family:var(--script);font-size:calc(var(--h) * .045);line-height:1.1}
+#sobre.abierto .solapa{transform:perspective(1200px) rotateX(180deg);z-index:1}
+#sobre.abierto .carta{transform:translateY(-30%)}
+#sobre.abierto .env{transform:translateY(22vh);transition:transform 1.4s cubic-bezier(.3,.7,.2,1) .6s}
+#abrir{position:absolute;left:50%;top:53.5%;width:31%;aspect-ratio:1;transform:translate(-50%,-50%);border:0;border-radius:50%;background:transparent;cursor:pointer;z-index:6}
+#abrir::before{content:"";position:absolute;inset:-6%;border-radius:50%;border:2px solid rgba(226,207,168,.9);animation:onda 2.2s ease-out infinite}
+@keyframes onda{from{transform:scale(.85);opacity:1}to{transform:scale(1.35);opacity:0}}
+#sobre.abierto #abrir{display:none}
+.pista{position:absolute;left:50%;bottom:calc(28px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:7;white-space:nowrap;padding:.6em 1.4em;border-radius:999px;background:rgba(251,248,241,.85);font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;color:var(--tinta);box-shadow:0 6px 16px -8px rgba(60,45,30,.4);animation:parpadeo 2.2s ease-in-out infinite}
+@keyframes parpadeo{50%{opacity:.35}}
+#sobre.abierto .pista{opacity:0;transition:opacity .3s}
+#chispas{position:fixed;inset:0;pointer-events:none;z-index:55}
+
+/* ================= CAPAS FIJAS ================= */
+#petalos{position:fixed;inset:0;pointer-events:none;z-index:40}
+html{overflow-x:hidden}
+
+/* Flores decorativas (recortes sin fondo) que se mecen */
+section{position:relative}
+.flor{position:absolute;pointer-events:none;z-index:3;width:var(--w,120px);height:auto;rotate:var(--r,0deg);transform-origin:var(--o,50% 100%);animation:mecer 6s ease-in-out infinite;animation-delay:var(--d,0s);filter:drop-shadow(0 8px 10px rgba(60,45,30,.18))}
+/* Orientación: el eucalipto forma una "L" (esquina abajo-izquierda); se voltea para las demás esquinas.
+   La gipsófila y los guisantes nacen del tallo abajo y se apoyan con el tallo en la esquina. */
+.flor.espejo{scale:-1 1}
+.flor.volteo{scale:1 -1}
+.flor.ambos{scale:-1 -1}
+@keyframes mecer{0%,100%{transform:rotate(0deg)}50%{transform:rotate(2.5deg)}}
+.js .revelar .flor{transition:opacity 1.2s ease .4s,translate 1.4s cubic-bezier(.2,.8,.2,1) .4s}
+.js .revelar.oculto .flor{opacity:0;translate:0 30px}
+.env .flor{z-index:7}
+
+/* ================= CONTENIDO ================= */
+main{max-width:520px;margin:0 auto;padding-block:36px 40px;display:grid;gap:64px;justify-items:center;text-align:center}
+section{width:100%;display:grid;gap:18px;justify-items:center}
+p{margin:0;max-width:34ch;text-wrap:pretty}
+.suave{color:var(--tinta-suave)}
+
+/* Marco de encaje */
+.marco{width:min(460px,100%);aspect-ratio:760/1155;background:url("elementos/marco.webp") center/100% 100% no-repeat;position:relative;container-type:inline-size;filter:drop-shadow(0 22px 30px rgba(70,55,40,.22))}
+.marco .dentro{position:absolute;left:17%;right:17%;top:19%;bottom:17%;display:grid;align-content:center;justify-items:center;gap:2.6cqw;text-align:center}
+.marco .lema{font-weight:600;font-size:3.5cqw;letter-spacing:.06em;text-transform:uppercase;line-height:1.3}
+.marco .bendicion{font-size:2.6cqw;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave);line-height:1.4}
+.marco .padres{display:grid;grid-template-columns:1fr 1fr;gap:1.2cqw 3cqw;font-style:italic;font-size:3.4cqw;line-height:1.25;width:100%}
+.marco .nombres{display:grid;justify-items:center;margin:1cqw 0}
+.marco .nombres .script{font-size:10.5cqw}
+.marco .amp{font-family:var(--script);color:var(--oro);font-size:8cqw;line-height:.6}
+.marco .honor{font-size:2.9cqw;letter-spacing:.1em;text-transform:uppercase;line-height:1.45}
+.marco .divisor{width:16cqw;height:1px;background:var(--oro)}
+.escribir{display:inline-block;clip-path:inset(0 100% 0 0);animation:escribe 2s cubic-bezier(.6,0,.3,1) forwards paused}
+.lista .escribir{animation-play-state:running}
+.escribir.d2{animation-delay:1.3s}.escribir.d3{animation-delay:1.8s}
+@keyframes escribe{to{clip-path:inset(0 -10% 0 0)}}
+
+/* Fecha */
+.fecha{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:18px;width:min(380px,100%)}
+.fecha .lado{border-block:1px solid var(--oro);padding:8px 0;font-size:1rem;letter-spacing:.28em;text-transform:uppercase}
+.fecha .dia{font-size:4.6rem;line-height:.9;font-weight:300;color:var(--oro)}
+.fecha-extra{font-size:1.05rem;letter-spacing:.28em;text-transform:uppercase}
+
+/* Cuenta regresiva */
+.reloj{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:min(400px,100%)}
+.reloj div{background:var(--marfil);border:1px solid var(--oro-claro);padding:14px 0 10px;display:grid;box-shadow:0 10px 20px -16px rgba(70,55,40,.5)}
+.reloj b{font-weight:400;font-size:2.3rem;line-height:1.05;font-variant-numeric:tabular-nums}
+.reloj b.salto{animation:salto .5s ease}
+@keyframes salto{from{transform:translateY(-6px);opacity:.3}}
+.reloj span{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--tinta-suave)}
+
+/* Foto */
+.foto{width:min(420px,100%);background:#fdfbf6;padding:12px 12px 44px;box-shadow:0 24px 40px -22px rgba(50,35,20,.55);transform:rotate(-2deg);position:relative;transition:transform .6s}
+.foto:hover{transform:rotate(0)}
+.foto.anillo{transform:rotate(2.5deg)}
+.foto.anillo:hover{transform:rotate(0)}
+.foto.anillo .ventana img{object-position:center 58%}
+.foto .ventana{overflow:hidden;aspect-ratio:4/5}
+.foto .ventana img{width:100%;height:100%;object-fit:cover;object-position:center 35%;transform:scale(1.12);transition:transform 2.5s cubic-bezier(.2,.7,.2,1)}
+.foto.visto .ventana img{transform:scale(1)}
+/* En la foto y en la confirmación las flores van detrás de la tarjeta y solo asoman por las esquinas */
+.foto,.rsvp{isolation:isolate}
+.foto .flor,.rsvp .flor{z-index:-1}
+.foto figcaption{position:absolute;left:0;right:0;bottom:8px;font-family:var(--script);font-size:1.6rem;color:var(--tinta-suave)}
+.foto .sello-img{position:absolute;right:-18px;top:-22px;width:74px;transform:rotate(12deg)}
+
+/* Tarjetas: ubicación, vestimenta, regalos */
+.tarjeta{position:relative;width:min(420px,100%);background:var(--marfil) var(--textura);padding:38px 26px 34px;box-shadow:0 20px 34px -24px rgba(60,45,30,.55);display:grid;gap:10px;justify-items:center}
+.tarjeta::before{content:"";position:absolute;inset:8px;border:1px solid var(--oro-claro);pointer-events:none}
+.tarjeta .sello-img{position:absolute;top:-30px;left:50%;width:62px;margin-left:-31px;filter:drop-shadow(0 4px 6px rgba(60,40,20,.35))}
+.tarjeta h3{font-weight:500;font-size:1.35rem;letter-spacing:.2em;text-transform:uppercase;margin:0}
+.tarjeta .linea{width:96px;height:96px;color:var(--tinta)}
+.tarjeta .grande{font-size:1.6rem}
+.tarjeta .lugar{font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.paleta{display:flex;gap:7px;justify-content:center;flex-wrap:wrap}
+.paleta i{width:26px;height:26px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.reservados{display:grid;gap:10px;justify-items:center;margin-top:14px;padding-top:16px;border-top:1px solid var(--oro-claro);width:min(260px,100%)}
+.reservados-fila{display:flex;gap:28px;justify-content:center}
+.reservados figure{margin:0;display:grid;gap:6px;justify-items:center}
+.reservados figcaption{font-size:.95rem;font-style:italic;color:var(--tinta-suave)}
+.tachado{position:relative;display:block;width:34px;height:34px;border-radius:50%;border:2px solid #9a3b3b;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.tachado::after{content:"";position:absolute;left:50%;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:#9a3b3b;transform:rotate(45deg)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font-family:var(--serif);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;padding:.75em 1.7em;border:1px solid var(--oro);border-radius:999px;color:var(--tinta);background:transparent;text-decoration:none;cursor:pointer;transition:background .3s,color .3s}
+.btn:hover{background:var(--oro);color:#fff}
+.btn.lleno{background:var(--tinta);border-color:var(--tinta);color:var(--marfil)}
+.btn.lleno:hover{background:var(--oro);border-color:var(--oro)}
+
+/* Ilustraciones de Ceremonia, Dress code y Regalos */
+.icono{height:var(--h);width:auto;max-width:80%;filter:drop-shadow(0 10px 12px rgba(60,45,30,.18));transition:opacity .9s ease .3s,scale 1s cubic-bezier(.3,1.5,.5,1) .3s,translate 1s cubic-bezier(.2,.8,.2,1) .3s}
+.js .revelar.oculto .icono{opacity:0;scale:.7;translate:0 24px}
+.icono.copas{transform-origin:50% 95%;animation:brindis 3.2s ease-in-out infinite}
+@keyframes brindis{0%,70%,100%{rotate:0deg}78%{rotate:-4deg}86%{rotate:3deg}93%{rotate:-1.5deg}}
+.icono.pareja{animation:pasear 5s ease-in-out infinite}
+@keyframes pasear{50%{transform:translateY(-5px)}}
+.icono.carta{animation:latir 2.6s ease-in-out infinite}
+@keyframes latir{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(-3deg) scale(1.05)}}
+/* Dibujos que se trazan solos */
+.linea path,.linea ellipse,.linea circle{fill:none;stroke:currentColor;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0}
+.js .linea.trazar *{stroke-dashoffset:1}
+.linea.trazado *{transition:stroke-dashoffset 2.6s ease-in-out;stroke-dashoffset:0!important}
+
+/* RSVP */
+.rsvp{background:var(--marfil) var(--textura);padding:34px 22px 36px;position:relative;width:min(440px,100%);box-shadow:0 20px 34px -24px rgba(60,45,30,.55)}
+.rsvp::before{content:"";position:absolute;inset:8px;border:1px solid var(--oro-claro);pointer-events:none}
+.rsvp .sello-img{position:absolute;top:-30px;left:50%;width:62px;margin-left:-31px}
+form{display:grid;gap:14px;width:100%;text-align:left;position:relative}
+label{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--tinta-suave);display:grid;gap:5px}
+input,select,textarea{font:inherit;font-size:1.05rem;color:var(--tinta);background:#fff;border:1px solid #e3dac9;border-radius:0;padding:.65em .8em;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--oro)}
+.opciones{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opciones input{position:absolute;opacity:0;width:1px}
+.opciones label{border:1px solid #e3dac9;background:#fff;padding:.9em .4em;text-align:center;cursor:pointer;color:var(--tinta);letter-spacing:.1em;transition:all .25s}
+.opciones input:checked+label{background:var(--tinta);color:var(--marfil);border-color:var(--tinta)}
+.opciones input:focus-visible+label{outline:2px solid var(--oro);outline-offset:2px}
+form .btn{justify-self:center;margin-top:4px}
+.nota{font-size:.88rem;color:var(--tinta-suave);text-align:center}
+#rsvp-listo{display:grid;gap:10px;justify-items:center;position:relative}
+
+/* Pie */
+.pie{display:grid;gap:6px;justify-items:center;padding-bottom:70px}
+.pie .script{font-size:3rem}
+.pie span{letter-spacing:.3em;font-size:.9rem}
+
+/* Aparición al hacer scroll */
+.revelar{transition:opacity 1.1s ease,transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.js .revelar.oculto{opacity:.001;transform:translateY(46px) scale(.97)}
+.js .tarjeta.revelar .sello-img{transition:transform 1s cubic-bezier(.3,1.6,.5,1) .5s,opacity .6s .5s}
+.js .tarjeta.revelar.oculto .sello-img{transform:scale(.2) rotate(-120deg);opacity:0}
+
+@media (max-width:420px){
+  body{font-size:17px}
+  main{gap:56px}
+  h2{font-size:2.5rem}
+  .reloj b{font-size:1.9rem}
+  .fecha .dia{font-size:3.8rem}
+  .fecha .lado{font-size:.85rem;letter-spacing:.2em}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .escribir{clip-path:none}
+  #petalos,#chispas{display:none}
+}
+</style>
+
+</head>
+<body>
+<div id="fondo" aria-hidden="true"></div>
+<!-- ============ SOBRE ============ -->
+<div id="sobre" role="dialog" aria-label="Sobre de la invitación">
+  <div class="env">
+    <div class="interior-sobre"></div>
+    <div class="carta"><span>Sophia &amp;<br>Jean Paul</span></div>
+    <div class="capa cuerpo"></div>
+    <div class="solapa"><div class="cara"></div><div class="dorso"></div></div>
+    <button id="abrir" type="button" aria-label="Abrir la invitación"></button>
+  </div>
+  <div class="pista">Toca el sello para abrir</div>
+</div>
+<canvas id="chispas" aria-hidden="true"></canvas>
+<canvas id="petalos" aria-hidden="true"></canvas>
+
+<main>
+  <!-- 1. Marco de encaje con nombres y padres -->
+  <section>
+    <div class="marco" id="marco">
+      <div class="dentro">
+        <div class="lema">Dos corazones, una promesa y toda una vida</div>
+        <div class="bendicion">Con la bendición de Dios y nuestros padres</div>
+        <div class="padres">
+          <span>Xiomara Vigil Morales</span><span>Maribel Suira De Gantes</span>
+          <span>Jimmy Hidalgo Caballero</span><span>Jorge Gantes</span>
+        </div>
+        <div class="divisor"></div>
+        <div class="nombres">
+          <span class="script escribir">Sophia Victoria</span>
+          <span class="amp escribir d2">&amp;</span>
+          <span class="script escribir d3">Jean Paul</span>
+        </div>
+        <div class="honor">Tenemos el honor de invitarles a celebrar nuestro matrimonio civil</div>
+      </div>
+      <img class="flor volteo" data-flor="eucalipto" alt="" style="--w:26%;left:-3%;top:-2%;--o:8% 5%">
+      <img class="flor" data-flor="gipsofila" alt="" style="--w:30%;right:calc(var(--w) * -0.5 + 6%);bottom:-2%;--o:50% 100%;--d:-3s">
+    </div>
+  </section>
+
+  <!-- 2. Fecha -->
+  <section class="revelar velo">
+    <span class="etiqueta">Guarda la fecha</span>
+    <div class="fecha">
+      <span class="lado">Sábado</span>
+      <span class="dia">12</span>
+      <span class="lado">Diciembre</span>
+    </div>
+    <div class="fecha-extra">2026 · 5:00 p. m.</div>
+  </section>
+
+  <!-- 3. Cuenta regresiva -->
+  <section class="revelar velo">
+    <h2>Falta poco</h2>
+    <div class="reloj">
+      <div><b id="cd-d">--</b><span>Días</span></div>
+      <div><b id="cd-h">--</b><span>Horas</span></div>
+      <div><b id="cd-m">--</b><span>Min</span></div>
+      <div><b id="cd-s">--</b><span>Seg</span></div>
+    </div>
+    <a class="btn" id="calendario" target="_blank" rel="noopener">Agendar en mi calendario</a>
+  </section>
+
+  <!-- 4. Foto -->
+  <section class="revelar">
+    <figure class="foto" id="foto" style="margin:0">
+      <div class="ventana"><img src="elementos/foto-baile.jpg" alt="Sophia Victoria y Jean Paul bailando bajo el arco de flores blancas frente al mar"></div>
+      <figcaption>nuestro sí</figcaption>
+      <img class="flor" data-flor="guisante" alt="" style="--w:120px;left:calc(var(--w) * -0.65 + 26px);bottom:-26px;--o:65% 100%;--d:-2s">
+    </figure>
+  </section>
+
+  <!-- 5. Ubicación -->
+  <article class="tarjeta revelar">
+    <img class="icono copas" src="elementos/copas.webp" alt="Dos copas de champán brindando" style="--h:130px">
+    <img class="flor ambos" data-flor="eucalipto" alt="" style="--w:96px;right:-14px;top:-14px;--o:92% 5%;--d:-1s">
+    <h3>Ceremonia</h3>
+    <div class="grande">5:00 p. m.</div>
+    <div class="lugar">Restaurante Zielo</div>
+    <div class="suave">Costa del Este, Panamá</div>
+    <a class="btn" target="_blank" rel="noopener" href="https://maps.google.com/maps/place/restaurante+zielo+panama/data=!4m2!3m1!1s0x8facab53348c11c1:0x243fd67b22561c38?hl=es-pa">Ver ubicación</a>
+  </article>
+
+  <!-- 6. Código de vestimenta -->
+  <article class="tarjeta revelar">
+    <img class="icono pareja" src="elementos/pareja.webp" alt="Pareja vestida de etiqueta: ella con vestido largo, él con traje y corbata" style="--h:170px">
+    <img class="flor espejo" data-flor="gipsofila" alt="" style="--w:120px;left:calc(var(--w) * -0.5 + 26px);bottom:-12px;--o:50% 100%;--d:-4s">
+    <h3>Dress code</h3>
+    <div class="grande" style="font-style:italic">Formal cocktail</div>
+    <p><b>Ellas:</b> vestido largo<br><b>Ellos:</b> traje completo y corbata</p>
+    <div class="paleta" aria-label="Colores sugeridos">
+      <i style="background:#7d8d6a"></i><i style="background:#bcd3a6"></i><i style="background:#f1b6d6"></i><i style="background:#f6b494"></i><i style="background:#c3dcf4"></i><i style="background:#d7b4d0"></i>
+    </div>
+    <div class="reservados">
+      <span class="etiqueta">Colores reservados</span>
+      <div class="reservados-fila">
+        <figure><i class="tachado" style="background:#ffffff"></i><figcaption>Blanco</figcaption></figure>
+        <figure><i class="tachado" style="background:#e8d9bf"></i><figcaption>Beige</figcaption></figure>
+      </div>
+    </div>
+  </article>
+
+  <!-- 7. Regalos -->
+  <article class="tarjeta revelar">
+    <img class="icono carta" src="elementos/sobre_regalo.webp" alt="Sobre sellado con lacre" style="--h:96px">
+    <img class="flor" data-flor="guisante" alt="" style="--w:116px;right:calc(var(--w) * -0.35 + 10px);bottom:-14px;--o:65% 100%;--d:-2s">
+    <h3>Regalos</h3>
+    <p>Tu presencia es el mejor regalo para nosotros. Si desean tener un detalle, tendremos un <b>cofre de los deseos</b> para contribuir a esta nueva etapa.</p>
+  </article>
+
+  <!-- 8. Confirmación de asistencia -->
+  <section class="revelar" id="confirmar">
+    <div class="velo" style="display:grid;gap:12px;justify-items:center;padding-bottom:44px;margin-bottom:-14px">
+      <span class="etiqueta">Confirma tu asistencia</span>
+      <h2>¿Nos acompañas?</h2>
+      <p class="suave">Por favor confírmanos tu asistencia lo antes posible.</p>
+    </div>
+    <div class="rsvp">
+      <form id="form-rsvp" novalidate>
+        <label for="nombre">Nombre completo
+          <input id="nombre" name="nombre" autocomplete="name" placeholder="Tu nombre">
+        </label>
+        <div class="opciones" role="radiogroup" aria-label="Asistencia">
+          <input type="radio" name="asiste" id="asiste-si" value="si" checked><label for="asiste-si">Con gusto asistiré</label>
+          <input type="radio" name="asiste" id="asiste-no" value="no"><label for="asiste-no">No podré ir</label>
+        </div>
+        <label for="pases">Número de personas
+          <select id="pases" name="pases"><option>1</option><option>2</option><option>3</option><option>4</option></select>
+        </label>
+        <label for="mensaje">Mensaje para los novios (opcional)
+          <textarea id="mensaje" name="mensaje" rows="3" placeholder="Unas palabras para Sophia y Jean Paul"></textarea>
+        </label>
+        <p class="nota" id="error-rsvp" hidden>Escribe tu nombre para poder confirmar.</p>
+        <button class="btn lleno" type="submit">Enviar por WhatsApp</button>
+      </form>
+      <div id="rsvp-listo" hidden>
+        <p>Se abrió WhatsApp con tu mensaje listo. Solo presiona <b>enviar</b> allí.</p>
+        <p class="nota">¿No se abrió? Escríbenos al <span id="wa-visible"></span>.</p>
+        <button class="btn" type="button" id="otra">Enviar otra confirmación</button>
+      </div>
+      <img class="flor" data-flor="eucalipto" alt="" style="--w:100px;left:-36px;bottom:-34px;--o:8% 95%">
+      <img class="flor espejo" data-flor="guisante" alt="" style="--w:110px;right:calc(var(--w) * -0.65 + 26px);bottom:-30px;--o:35% 100%;--d:-3s">
+    </div>
+  </section>
+
+  <!-- Foto final: el anillo -->
+  <section class="revelar">
+    <figure class="foto anillo" style="margin:0">
+      <div class="ventana"><img src="elementos/foto-anillo.jpg" alt="Jean Paul sostiene la mano de Sophia Victoria con el anillo de compromiso"></div>
+      <figcaption>para siempre</figcaption>
+      <img class="flor ambos" data-flor="eucalipto" alt="" style="--w:92px;right:-30px;top:-28px;--o:92% 5%;--d:-1s">
+    </figure>
+  </section>
+
+  <!-- Pie -->
+  <section class="pie revelar velo" style="padding-bottom:30px;margin-bottom:70px">
+    <div class="script">Sophia &amp; Jean Paul</div>
+    <span>12 · 12 · 2026</span>
+  </section>
+</main>
+
+<script>
+/* ======= DATOS EDITABLES ======= */
+const BODA = {
+  fechaISO: "2026-12-12T17:00:00-05:00",     // 5:00 p. m., hora de Panamá
+  lugar: "Restaurante Zielo, Costa del Este, Panamá",
+  whatsapp: "50760000000",                   // número con código de país, sin + ni espacios
+  whatsappVisible: "+507 6000-0000"
+};
+/* =============================== */
+
+document.documentElement.classList.add("js");
+
+// Flores sin fondo (cada imagen se carga una sola vez y se reutiliza)
+const FLORES = { eucalipto: "elementos/eucalipto.webp", gipsofila: "elementos/gipsofila.webp", guisante: "elementos/guisante.webp" };
+document.querySelectorAll("[data-flor]").forEach(img => { img.src = FLORES[img.dataset.flor]; });
+const reducido = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Calendario de Google
+(() => {
+  const ini = new Date(BODA.fechaISO), fin = new Date(ini.getTime() + 6 * 3600e3);
+  const f = d => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+  document.getElementById("calendario").href = "https://calendar.google.com/calendar/render?" + new URLSearchParams({
+    action: "TEMPLATE", text: "Boda de Sophia Victoria & Jean Paul", dates: f(ini) + "/" + f(fin),
+    details: "Matrimonio civil · Formal cocktail", location: BODA.lugar });
+})();
+
+// Cuenta regresiva
+(() => {
+  const meta = new Date(BODA.fechaISO).getTime(), p = n => String(n).padStart(2, "0");
+  const el = id => document.getElementById(id);
+  const poner = (e, v) => { if (e.textContent !== v) { e.textContent = v; e.classList.remove("salto"); void e.offsetWidth; e.classList.add("salto"); } };
+  const tic = () => {
+    const r = Math.max(0, meta - Date.now()) / 1000;
+    poner(el("cd-d"), String(Math.floor(r / 86400))); poner(el("cd-h"), p(Math.floor(r % 86400 / 3600)));
+    poner(el("cd-m"), p(Math.floor(r % 3600 / 60))); poner(el("cd-s"), p(Math.floor(r % 60)));
+  };
+  tic(); setInterval(tic, 1000);
+})();
+
+// Aparición, sellos que giran, dibujos que se trazan y foto que se acerca
+(() => {
+  const io = "IntersectionObserver" in window && !reducido ? new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.remove("oculto");
+    e.target.querySelectorAll(".linea.trazar").forEach(s => setTimeout(() => s.classList.add("trazado"), 450));
+    e.target.querySelectorAll(".foto").forEach(f => f.classList.add("visto"));
+    io.unobserve(e.target);
+  }), { threshold: .15 }) : null;
+  document.querySelectorAll(".revelar").forEach(el => {
+    if (!io) { el.querySelectorAll(".linea").forEach(s => s.classList.remove("trazar")); el.querySelectorAll(".foto").forEach(f => f.classList.add("visto")); return; }
+    if (el.getBoundingClientRect().top > innerHeight) el.classList.add("oculto");
+    io.observe(el);
+  });
+})();
+
+// RSVP por WhatsApp
+const form = document.getElementById("form-rsvp"), listo = document.getElementById("rsvp-listo");
+document.getElementById("wa-visible").textContent = BODA.whatsappVisible;
+document.getElementById("otra").addEventListener("click", () => { form.reset(); form.hidden = false; listo.hidden = true; });
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const fd = new FormData(form), nombre = fd.get("nombre").trim(), err = document.getElementById("error-rsvp");
+  if (!nombre) { err.hidden = false; document.getElementById("nombre").focus(); return; }
+  err.hidden = true;
+  let txt = fd.get("asiste") === "si"
+    ? `¡Hola! Soy ${nombre} y confirmo con mucha alegría mi asistencia al matrimonio de Sophia Victoria & Jean Paul el sábado 12 de diciembre. Personas: ${fd.get("pases")}.`
+    : `¡Hola! Soy ${nombre}. Lamentablemente no podré asistir al matrimonio de Sophia Victoria & Jean Paul, pero les deseo muchísimas bendiciones.`;
+  if (fd.get("mensaje").trim()) txt += `\n\nMensaje: ${fd.get("mensaje").trim()}`;
+  const a = document.createElement("a");
+  a.href = `https://wa.me/${BODA.whatsapp}?text=${encodeURIComponent(txt)}`; a.target = "_blank"; a.rel = "noopener";
+  document.body.appendChild(a); a.click(); a.remove();
+  form.hidden = true; listo.hidden = false;
+});
+
+// Destellos dorados al romper el sello
+function chispas(x, y) {
+  if (reducido) return;
+  const cv = document.getElementById("chispas"), cx = cv.getContext("2d"), dpr = devicePixelRatio || 1;
+  cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; cx.scale(dpr, dpr);
+  const ps = Array.from({ length: 70 }, () => {
+    const a = Math.random() * Math.PI * 2, v = 2 + Math.random() * 5;
+    return { x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 2, r: 1 + Math.random() * 2.5, vida: 1 };
+  });
+  (function frame() {
+    cx.clearRect(0, 0, innerWidth, innerHeight);
+    let vivas = 0;
+    for (const p of ps) {
+      if (p.vida <= 0) continue; vivas++;
+      p.x += p.vx; p.y += p.vy; p.vy += .12; p.vx *= .98; p.vida -= .012;
+      cx.globalAlpha = Math.max(p.vida, 0);
+      cx.fillStyle = Math.random() > .5 ? "#e8cf98" : "#fff6dc";
+      cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, Math.PI * 2); cx.fill();
+    }
+    if (vivas) requestAnimationFrame(frame); else cx.clearRect(0, 0, innerWidth, innerHeight);
+  })();
+}
+
+// Pétalos cayendo
+function petalos() {
+  if (reducido) return;
+  const cv = document.getElementById("petalos"), cx = cv.getContext("2d"), dpr = devicePixelRatio || 1;
+  let W, H; const ps = [];
+  const tam = () => { W = cv.width = innerWidth * dpr; H = cv.height = innerHeight * dpr; };
+  tam(); addEventListener("resize", tam);
+  const tonos = [["255,255,255", "236,228,212"], ["255,252,240", "226,207,168"], ["255,255,255", "214,226,206"]];
+  for (let i = 0; i < 22; i++) ps.push({ x: Math.random() * W, y: Math.random() * -H, r: (5 + Math.random() * 6) * dpr,
+    v: (.35 + Math.random() * .6) * dpr, a: Math.random() * 6, va: (Math.random() - .5) * .03, o: Math.random() * 6, c: tonos[i % 3] });
+  (function frame(t) {
+    cx.clearRect(0, 0, W, H);
+    for (const p of ps) {
+      p.y += p.v; p.x += Math.sin(t / 1400 + p.o) * .6 * dpr; p.a += p.va;
+      if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+      cx.save(); cx.translate(p.x, p.y); cx.rotate(p.a); cx.scale(1, .6 + .4 * Math.sin(t / 700 + p.o));
+      const g = cx.createRadialGradient(0, 0, 0, 0, 0, p.r);
+      g.addColorStop(0, `rgba(${p.c[0]},.95)`); g.addColorStop(1, `rgba(${p.c[1]},.65)`);
+      cx.fillStyle = g; cx.beginPath(); cx.ellipse(0, 0, p.r, p.r * .6, 0, 0, Math.PI * 2); cx.fill(); cx.restore();
+    }
+    requestAnimationFrame(frame);
+  })(0);
+}
+
+// Abrir el sobre: destellos, la solapa se levanta, sale la carta y aparece la invitación
+document.body.classList.add("cerrado");
+document.getElementById("abrir").addEventListener("click", e => {
+  const r = e.currentTarget.getBoundingClientRect();
+  chispas(r.left + r.width / 2, r.top + r.height / 2);
+  const sobre = document.getElementById("sobre");
+  sobre.classList.add("abierto");
+  setTimeout(() => {
+    sobre.classList.add("fuera");
+    document.body.classList.remove("cerrado");
+    document.getElementById("marco").classList.add("lista");
+    petalos();
+  }, reducido ? 0 : 2600);
+});
+if (reducido) document.getElementById("marco").classList.add("lista");
+</script>
+
+</body>
+</html>
