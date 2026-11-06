@@ -36,7 +36,7 @@
 [hidden]{display:none!important}
 /* Velo marfil translúcido para que el texto se lea sobre la foto de flores */
 .velo{width:min(440px,100%);background:rgba(251,248,241,.8);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);padding:30px 20px;box-shadow:0 18px 34px -26px rgba(60,45,30,.45)}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 #fondo{position:fixed;inset:0;z-index:-1;background:var(--fondo) url("elementos/fondo.webp") right center/cover no-repeat}
 body{background:var(--fondo);color:var(--tinta);font-family:var(--serif);font-size:18px;line-height:1.55;overflow-x:hidden;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 body.cerrado{overflow:hidden;height:100%}
@@ -44,7 +44,7 @@ img{max-width:100%;display:block}
 :focus-visible{outline:2px solid var(--oro);outline-offset:3px}
 .script{font-family:var(--script);font-weight:400;line-height:1.1}
 .etiqueta{font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;color:var(--oro);font-weight:500}
-h2{font-family:var(--script);font-weight:400;font-size:2.9rem;line-height:1;margin:0;text-wrap:balance}
+h2{font-family:var(--script);font-weight:400;font-size:2.9rem;line-height:1.15;margin:0;text-wrap:balance}
 
 /* ================= SOBRE ================= */
 #sobre{position:fixed;inset:0;z-index:50;background:#ece6dc var(--textura);display:grid;place-items:center;padding:16px;overflow:hidden;transition:opacity 1.2s ease,visibility 0s linear 1.2s;perspective:1600px}
@@ -90,6 +90,7 @@ section{position:relative}
 .js .revelar .flor{transition:opacity 1.2s ease .4s,translate 1.4s cubic-bezier(.2,.8,.2,1) .4s}
 .js .revelar.oculto .flor{opacity:0;translate:0 30px}
 .env .flor{z-index:7}
+.midiendo .flor,.midiendo .revelar{animation:none!important;transition:none!important;translate:none!important;transform:none!important}
 
 /* ================= CONTENIDO ================= */
 main{max-width:520px;margin:0 auto;padding-block:36px 40px;display:grid;gap:64px;justify-items:center;text-align:center}
@@ -99,15 +100,18 @@ p{margin:0;max-width:34ch;text-wrap:pretty}
 
 /* Marco de encaje */
 .marco{width:min(460px,100%);aspect-ratio:760/1155;background:url("elementos/marco.webp") center/100% 100% no-repeat;position:relative;container-type:inline-size;filter:drop-shadow(0 22px 30px rgba(70,55,40,.22))}
-.marco .dentro{position:absolute;left:17%;right:17%;top:19%;bottom:17%;display:grid;align-content:center;justify-items:center;gap:2.6cqw;text-align:center}
-.marco .lema{font-weight:600;font-size:3.5cqw;letter-spacing:.06em;text-transform:uppercase;line-height:1.3}
-.marco .bendicion{font-size:2.6cqw;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave);line-height:1.4}
-.marco .padres{display:grid;grid-template-columns:1fr 1fr;gap:1.2cqw 3cqw;font-style:italic;font-size:3.4cqw;line-height:1.25;width:100%}
-.marco .nombres{display:grid;justify-items:center;margin:1cqw 0}
-.marco .nombres .script{font-size:10.5cqw}
-.marco .amp{font-family:var(--script);color:var(--oro);font-size:8cqw;line-height:.6}
-.marco .honor{font-size:2.9cqw;letter-spacing:.1em;text-transform:uppercase;line-height:1.45}
-.marco .divisor{width:16cqw;height:1px;background:var(--oro)}
+/* --u = 1% del ancho del marco (cqw, con respaldo en vw para navegadores antiguos); --k lo reduce el JS si el teléfono agranda la letra */
+.marco{--u:calc(min(460px,100vw - 32px) / 100)}
+@supports (width:1cqw){.marco .dentro{--u:1cqw}}
+.marco .dentro{--k:1;position:absolute;left:17%;right:17%;top:19%;bottom:17%;z-index:4;display:grid;align-content:center;justify-items:center;gap:calc(var(--u) * 2.6 * var(--k));text-align:center}
+.marco .lema{font-weight:600;font-size:calc(var(--u) * 3.5 * var(--k));letter-spacing:.06em;text-transform:uppercase;line-height:1.3}
+.marco .bendicion{font-size:calc(var(--u) * 2.6 * var(--k));letter-spacing:.16em;text-transform:uppercase;color:var(--tinta-suave);line-height:1.4}
+.marco .padres{display:grid;grid-template-columns:1fr 1fr;gap:calc(var(--u) * 1.2) calc(var(--u) * 3);font-style:italic;font-size:calc(var(--u) * 3.4 * var(--k));line-height:1.25;width:100%}
+.marco .nombres{display:grid;justify-items:center;gap:calc(var(--u) * .6 * var(--k));margin:var(--u) 0}
+.marco .nombres .script{font-size:calc(var(--u) * 10.5 * var(--k));line-height:1.2;white-space:nowrap}
+.marco .amp{font-family:var(--script);color:var(--oro);font-size:calc(var(--u) * 8 * var(--k));line-height:.8}
+.marco .honor{font-size:calc(var(--u) * 2.9 * var(--k));letter-spacing:.1em;text-transform:uppercase;line-height:1.45}
+.marco .divisor{width:calc(var(--u) * 16);height:1px;background:var(--oro)}
 .escribir{display:inline-block;clip-path:inset(0 100% 0 0);animation:escribe 2s cubic-bezier(.6,0,.3,1) forwards paused}
 .lista .escribir{animation-play-state:running}
 .escribir.d2{animation-delay:1.3s}.escribir.d3{animation-delay:1.8s}
@@ -327,10 +331,10 @@ form .btn{justify-self:center;margin-top:4px}
     <img class="flor espejo" data-flor="gipsofila" alt="" style="--w:120px;left:calc(var(--w) * -0.5 + 26px);bottom:-12px;--o:50% 100%;--d:-4s">
     <h3>Dress code</h3>
     <div class="grande" style="font-style:italic">Formal cocktail</div>
-    <p><b>Ellas:</b> vestido largo<br><b>Ellos:</b> traje completo y corbata</p>
     <div class="paleta" aria-label="Colores sugeridos">
       <i style="background:#7d8d6a"></i><i style="background:#bcd3a6"></i><i style="background:#f1b6d6"></i><i style="background:#f6b494"></i><i style="background:#c3dcf4"></i><i style="background:#d7b4d0"></i>
     </div>
+    <p><b>Ellas:</b> vestido largo<br><b>Ellos:</b> traje completo y corbata</p>
     <div class="reservados">
       <span class="etiqueta">Colores reservados</span>
       <div class="reservados-fila">
@@ -419,6 +423,75 @@ document.documentElement.classList.add("js");
 const FLORES = { eucalipto: "elementos/eucalipto.webp", gipsofila: "elementos/gipsofila.webp", guisante: "elementos/guisante.webp" };
 document.querySelectorAll("[data-flor]").forEach(img => { img.src = FLORES[img.dataset.flor]; });
 const reducido = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Ajuste por teléfono: el texto del marco se reduce si no cabe (letra grande del sistema)
+// y cada flor se achica hasta que ninguno de sus pétalos toque texto, botones o campos.
+(() => {
+  const dentro = document.querySelector(".marco .dentro"), flores = [...document.querySelectorAll(".flor")];
+  flores.forEach(img => { img.dataset.w = img.style.getPropertyValue("--w"); });
+  function ajustarMarco() {
+    let k = 1; dentro.style.setProperty("--k", 1);
+    const cabe = () => {
+      const hijos = [...dentro.children], gap = parseFloat(getComputedStyle(dentro).rowGap) || 0;
+      const alto = hijos.reduce((s, c) => s + c.offsetHeight, 0) + (hijos.length - 1) * gap;
+      return alto <= dentro.clientHeight && [...dentro.querySelectorAll(".nombres span")].every(s => s.scrollWidth <= dentro.clientWidth);
+    };
+    while (!cabe() && k > .6) { k -= .04; dentro.style.setProperty("--k", k.toFixed(2)); }
+  }
+  const mascaras = new Map();
+  function mascara(img) {
+    if (mascaras.has(img.src)) return mascaras.get(img.src);
+    let m = null;
+    try {
+      const c = document.createElement("canvas"); c.width = 120; c.height = Math.round(120 * img.naturalHeight / img.naturalWidth);
+      const x = c.getContext("2d", { willReadFrequently: true }); x.drawImage(img, 0, 0, c.width, c.height);
+      m = { w: c.width, h: c.height, a: x.getImageData(0, 0, c.width, c.height).data };
+    } catch (e) {}
+    mascaras.set(img.src, m); return m;
+  }
+  function obstaculos(cont) {
+    const rs = [], tw = document.createTreeWalker(cont, NodeFilter.SHOW_TEXT); let n;
+    while ((n = tw.nextNode())) {
+      if (!n.textContent.trim() || n.parentElement.closest("[hidden]")) continue;
+      const r = document.createRange(); r.selectNodeContents(n); rs.push(...r.getClientRects());
+    }
+    cont.querySelectorAll(".paleta i,.tachado,input,select,textarea,.btn,.whatsapp,.opciones label").forEach(e => e.offsetParent && rs.push(e.getBoundingClientRect()));
+    return rs;
+  }
+  // ¿Algún píxel visible de la flor cae sobre un obstáculo (con 5px de margen)?
+  function toca(img, rs) {
+    const m = mascara(img), b = img.getBoundingClientRect(), cl = img.classList, M = 5;
+    const fx = cl.contains("espejo") || cl.contains("ambos"), fy = cl.contains("volteo") || cl.contains("ambos");
+    for (const r of rs) {
+      const x0 = Math.max(b.left, r.left - M), x1 = Math.min(b.right, r.right + M), y0 = Math.max(b.top, r.top - M), y1 = Math.min(b.bottom, r.bottom + M);
+      if (x0 >= x1 || y0 >= y1) continue;
+      if (!m) return true;
+      for (let y = y0; y < y1; y += 2) for (let x = x0; x < x1; x += 2) {
+        let u = (x - b.left) / b.width, v = (y - b.top) / b.height; if (fx) u = 1 - u; if (fy) v = 1 - v;
+        if (m.a[(Math.min(m.h - 1, v * m.h | 0) * m.w + Math.min(m.w - 1, u * m.w | 0)) * 4 + 3] > 40) return true;
+      }
+    }
+    return false;
+  }
+  function ajustarFlores() {
+    document.documentElement.classList.add("midiendo");
+    flores.forEach(img => {
+      img.style.setProperty("--w", img.dataset.w); img.style.zIndex = img.style.margin = "";
+      if (!img.naturalWidth || getComputedStyle(img).zIndex === "-1") return;
+      const rs = obstaculos(img.closest("section,article")), original = img.getBoundingClientRect().width;
+      // Primero la empuja hacia su esquina (fuera de la tarjeta); si aún toca, la achica
+      const lado = img.style.left ? "marginLeft" : "marginRight", alto = img.style.top ? "marginTop" : "marginBottom";
+      for (let s = 0; s <= .3 && toca(img, rs); s += .05) { img.style[lado] = img.style[alto] = (-s * original).toFixed(1) + "px"; }
+      let w = original;
+      while (toca(img, rs) && w > original * .5) { w *= .92; img.style.setProperty("--w", w.toFixed(1) + "px"); }
+      if (toca(img, rs)) img.style.zIndex = "-1";   // último recurso: detrás del contenido
+    });
+    document.documentElement.classList.remove("midiendo");
+  }
+  const todo = () => { ajustarMarco(); ajustarFlores(); };
+  let espera; addEventListener("resize", () => { clearTimeout(espera); espera = setTimeout(todo, 200); });
+  Promise.all([document.fonts ? document.fonts.ready : 0, ...flores.map(i => i.decode ? i.decode().catch(() => {}) : 0)]).then(todo);
+})();
 
 // Calendario de Google
 (() => {
