@@ -163,10 +163,10 @@ p{margin:0;max-width:34ch;text-wrap:pretty}
 .tarjeta .lugar{font-weight:600;letter-spacing:.1em;text-transform:uppercase}
 .paleta{display:flex;gap:7px;justify-content:center;flex-wrap:wrap}
 .paleta i{width:26px;height:26px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
-.reservados{display:grid;gap:10px;justify-items:center;margin-top:14px;padding-top:16px;border-top:1px solid var(--oro-claro);width:min(260px,100%)}
-.reservados-fila{display:flex;gap:28px;justify-content:center}
+.reservados{display:grid;gap:10px;justify-items:center;margin-top:14px;padding-top:16px;border-top:1px solid var(--oro-claro);width:min(300px,100%)}
+.reservados-fila{display:flex;gap:18px;justify-content:center;align-items:flex-start}
 .reservados figure{margin:0;display:grid;gap:6px;justify-items:center}
-.reservados figcaption{font-size:.95rem;font-style:italic;color:var(--tinta-suave)}
+.reservados figcaption{font-size:.95rem;font-style:italic;color:var(--tinta-suave);max-width:6.5em;text-align:center;line-height:1.2}
 .tachado{position:relative;display:block;width:34px;height:34px;border-radius:50%;border:2px solid #9a3b3b;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
 .tachado::after{content:"";position:absolute;left:50%;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:#9a3b3b;transform:rotate(45deg)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font-family:var(--serif);font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;padding:.75em 1.7em;border:1px solid var(--oro);border-radius:999px;color:var(--tinta);background:transparent;text-decoration:none;cursor:pointer;transition:background .3s,color .3s}
@@ -347,8 +347,9 @@ form .btn{justify-self:center;margin-top:4px}
     <div class="reservados">
       <span class="etiqueta">Colores reservados</span>
       <div class="reservados-fila">
+        <figure><i class="tachado" style="background:#1f2a44"></i><figcaption>Azul navy</figcaption></figure>
         <figure><i class="tachado" style="background:#ffffff"></i><figcaption>Blanco</figcaption></figure>
-        <figure><i class="tachado" style="background:#e8d9bf"></i><figcaption>Beige</figcaption></figure>
+        <figure><i class="tachado" style="background:#e9b8a0"></i><figcaption>Rosegold suave</figcaption></figure>
       </div>
     </div>
   </article>
